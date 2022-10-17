@@ -14,11 +14,21 @@ class SecondPage extends HookConsumerWidget {
           children: [
             Consumer(
               builder: (_, ref, __) {
-                return ElevatedButton(
-                  onPressed: () {
-                    ref.read(counterProvider.notifier).increment();
-                  },
-                  child: Text('Count ${ref.watch(counterProvider)}'),
+                return Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        ref.read(counterProvider.notifier).increment();
+                      },
+                      child: Text('Counter: ${ref.watch(counterProvider)}'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        ref.read(counter2Provider.notifier).increment();
+                      },
+                      child: Text('Counter2: ${ref.watch(counter2Provider)}'),
+                    ),
+                  ],
                 );
               },
             ),
